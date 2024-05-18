@@ -1,28 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-<link rel="stylesheet" href="style.css">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="title" content="Ruffle Example">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="language" content="English">
-  <title>Ruffle Example</title>
-  <script src="main.js"></script>
-  <noscript>Your browser doesn't have JavaScript enabled. Please enable JavaScript or switch to a browser that
-    supports it.</noscript>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-<div id='ruffle' style="align-items: center; justify-content: center;display: flex;" class="gameloc"></div>
-<script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
-<script id = "gabe">swfobject.embedSWF("../flashfiles/bloons-td4-expansion.swf", 'ruffle', 800, 600);</script>
-<button onclick="Fullscreen()">Fullscreen</button>
+    
+
 <script>
-        function Fullscreen() {
-            var gameframe = document.getElementById('ruffle');
-            gameframe.requestFullscreen();
-        }
-    </script>
+    window.RufflePlayer = window.RufflePlayer || {};
+    window.addEventListener("load", (event) => {
+        const ruffle = window.RufflePlayer.newest();
+        const player = ruffle.createPlayer();
+        const container = document.getElementById("container");
+        container.appendChild(player);
+        player.load("./flashfiles/bloons-td4-expansion.swf");
+        player.style.height = "100vh";
+        player.style.width = "100vh"
+    });
+</script>
+<script src="./main.js"></script>
+<div id="container" width="100vh" height="100vh" style="align-items: center; justify-content: center;display: flex;"></div>
 </body>
-</html>
